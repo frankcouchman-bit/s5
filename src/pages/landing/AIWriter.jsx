@@ -3,43 +3,47 @@ import React from "react";
 import HeadTags from "@/components/seo/HeadTags";
 
 export default function AIWriter() {
-  const canonicalUrl = (typeof window !== "undefined")
-    ? `${window.location.origin}/ai-writer`
-    : "/ai-writer";
+  const canonicalUrl =
+    typeof window !== "undefined" ? `${window.location.origin}/ai-writer` : "/ai-writer";
 
-  const faqs = [
-  {
-    "q": "What makes this tool different?",
-    "a": "It mirrors search intent, structures content to match the SERP, and includes citations, internal links, and meta out of the box."
-  },
-  {
-    "q": "Is it suitable for U.S. and global markets?",
-    "a": "Yes\u2014customize language and geo context for U.S. English or international English."
-  },
-  {
-    "q": "How long are the articles?",
-    "a": "Configure 2,000\u20136,000+ words depending on topic depth and intent."
-  },
-  {
-    "q": "Can I export to CMS?",
-    "a": "Yes\u2014export markdown/HTML and copy meta tags directly. Notion/Trello export supported."
-  }
-];
+  const keywords = [
+    "ai writer",
+    "ai article writer",
+    "seo writer",
+    "content writer ai",
+    "long form ai content",
+  ];
+
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: "SEOScribe AI Writer that Mirrors Search Intent",
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      offers: { "@type": "Offer", price: "24.00", priceCurrency: "USD" },
+      aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: "187" },
+      areaServed: "US, Global",
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
       <HeadTags
         title="AI Writer — Long-Form SEO Content Generator | SEOScribe"
         description="Turn a topic into a comprehensive, citation-backed article with meta, images and social cards in minutes. Built for U.S. and global search markets."
-        keywords=["ai writer", "ai article writer", "seo writer", "content writer ai", "long form ai content"]
+        keywords={keywords}
         canonical={canonicalUrl}
-        jsonLd={[{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "SEOScribe AI Writer that Mirrors Search Intent", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "24.00", "priceCurrency": "USD"}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "187"}, "areaServed": "US, Global"}]}
+        jsonLd={jsonLd}
       />
 
       <header className="py-14 border-b">
         <div className="max-w-6xl mx-auto px-4">
           <h1 className="text-3xl sm:text-5xl font-bold">AI Writer that Mirrors Search Intent</h1>
-          <p className="mt-4 text-slate-600">Turn a topic into a comprehensive, citation-backed article with meta, images and social cards in minutes. Built for U.S. and global search markets.</p>
+          <p className="mt-4 text-slate-600">
+            Turn a topic into a comprehensive, citation-backed article with meta, images and social cards in minutes.
+            Built for U.S. and global search markets.
+          </p>
         </div>
       </header>
 
@@ -47,8 +51,9 @@ export default function AIWriter() {
         <section>
           <h2 className="text-2xl font-semibold">Why SEOScribe?</h2>
           <p className="mt-3 text-slate-700">
-            Create deeply researched, SEO-optimized long-form articles with citations, meta, internal links, and social snippets.
-            Our pipeline mirrors search intent using real-time SERP insights to maximize topical coverage and ranking potential.
+            Create deeply researched, SEO-optimized long-form articles with citations, meta, internal links, and social
+            snippets. Our pipeline mirrors search intent using real-time SERP insights to maximize topical coverage and
+            ranking potential.
           </p>
           <ul className="mt-6 grid gap-4 sm:grid-cols-2">
             <li className="p-4 rounded-xl border">Long-form drafts (2,000–6,000+ words)</li>
@@ -72,20 +77,65 @@ export default function AIWriter() {
         <section id="faqs">
           <h2 className="text-2xl font-semibold mb-4">Frequently asked questions</h2>
           <div className="space-y-3">
-            {faqs.map((qa, idx) => (
-              <details key={idx} className="p-4 rounded-xl border">
+            {[
+              {
+                q: "What is an AI Writer?",
+                a:
+                  "An AI-driven assistant that generates SEO-ready long-form content, titles, descriptions, FAQs and social posts.",
+              },
+              { q: "Can I include sources?", a: "Yes, enable citations and add curated outbound links to authoritative sources." },
+              { q: "Does it help with internal links?", a: "Yes, it suggests internal links to improve crawlability and topical clusters." },
+              {
+                q: "Will it help rankings?",
+                a:
+                  "It aligns content to search intent and improves comprehensiveness—the fundamentals for ranking. Results vary by niche and competition.",
+              },
+            ].map((qa, i) => (
+              <details key={i} className="p-4 rounded-xl border">
                 <summary className="font-medium cursor-pointer">{qa.q}</summary>
                 <p className="mt-2 text-slate-700">{qa.a}</p>
               </details>
             ))}
           </div>
+
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify({
-              "@context":"https://schema.org",
-              "@type":"FAQPage",
-              "mainEntity": faqs.map(qa => ({"@type":"Question","name": qa.q, "acceptedAnswer": {"@type":"Answer","text": qa.a}}))
-            }) }}
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: [
+                  {
+                    "@type": "Question",
+                    name: "What is an AI Writer?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text:
+                        "An AI-driven assistant that generates SEO-ready long-form content, titles, descriptions, FAQs and social posts.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Can I include sources?",
+                    acceptedAnswer: { "@type": "Answer", text: "Yes, enable citations and add curated outbound links to authoritative sources." },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Does it help with internal links?",
+                    acceptedAnswer: { "@type": "Answer", text: "Yes, it suggests internal links to improve crawlability and topical clusters." },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Will it help rankings?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text:
+                        "It aligns content to search intent and improves comprehensiveness—the fundamentals for ranking. Results vary by niche and competition.",
+                    },
+                  },
+                ],
+              }),
+            }}
           />
         </section>
       </main>
