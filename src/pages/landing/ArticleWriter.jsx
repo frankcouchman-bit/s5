@@ -3,43 +3,52 @@ import React from "react";
 import HeadTags from "@/components/seo/HeadTags";
 
 export default function ArticleWriter() {
-  const canonicalUrl = (typeof window !== "undefined")
-    ? `${window.location.origin}/article-writer`
-    : "/article-writer";
+  const canonicalUrl =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/article-writer`
+      : "/article-writer";
 
-  const faqs = [
-  {
-    "q": "What makes this tool different?",
-    "a": "It mirrors search intent, structures content to match the SERP, and includes citations, internal links, and meta out of the box."
-  },
-  {
-    "q": "Is it suitable for U.S. and global markets?",
-    "a": "Yes\u2014customize language and geo context for U.S. English or international English."
-  },
-  {
-    "q": "How long are the articles?",
-    "a": "Configure 2,000\u20136,000+ words depending on topic depth and intent."
-  },
-  {
-    "q": "Can I export to CMS?",
-    "a": "Yes\u2014export markdown/HTML and copy meta tags directly. Notion/Trello export supported."
-  }
-];
+  const keywords = [
+    "article writer",
+    "seo article writer",
+    "long form writer",
+    "content generator",
+    "writing tool",
+    "ai article writer",
+  ];
+
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: "SEOScribe AI Article Writer for SEO-Optimized Long-Form Content",
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      offers: { "@type": "Offer", price: "24.00", priceCurrency: "USD" },
+      aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: "187" },
+      areaServed: "US, Global",
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
       <HeadTags
         title="Article Writer — SEO-Optimized Long-Form Content | SEOScribe"
         description="Generate in-depth, intent-aligned articles (2,000–6,000+ words) with citations, meta, and internal links—built for U.S. and global SEO."
-        keywords=["article writer", "seo article writer", "long form writer", "content generator", "writing tool", "ai article writer"]
+        keywords={keywords}
         canonical={canonicalUrl}
-        jsonLd={[{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "SEOScribe AI Article Writer for SEO-Optimized Long-Form Content", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "24.00", "priceCurrency": "USD"}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "187"}, "areaServed": "US, Global"}]}
+        jsonLd={jsonLd}
       />
 
       <header className="py-14 border-b">
         <div className="max-w-6xl mx-auto px-4">
-          <h1 className="text-3xl sm:text-5xl font-bold">AI Article Writer for SEO-Optimized Long-Form Content</h1>
-          <p className="mt-4 text-slate-600">Generate in-depth, intent-aligned articles (2,000–6,000+ words) with citations, meta, and internal links—built for U.S. and global SEO.</p>
+          <h1 className="text-3xl sm:text-5xl font-bold">
+            AI Article Writer for SEO-Optimized Long-Form Content
+          </h1>
+          <p className="mt-4 text-slate-600">
+            Generate in-depth, intent-aligned articles (2,000–6,000+ words) with citations, meta,
+            and internal links—built for U.S. and global SEO.
+          </p>
         </div>
       </header>
 
@@ -47,8 +56,9 @@ export default function ArticleWriter() {
         <section>
           <h2 className="text-2xl font-semibold">Why SEOScribe?</h2>
           <p className="mt-3 text-slate-700">
-            Create deeply researched, SEO-optimized long-form articles with citations, meta, internal links, and social snippets.
-            Our pipeline mirrors search intent using real-time SERP insights to maximize topical coverage and ranking potential.
+            Create deeply researched, SEO-optimized long-form articles with citations, meta,
+            internal links, and social snippets. Our pipeline mirrors search intent using real-time
+            SERP insights to maximize topical coverage and ranking potential.
           </p>
           <ul className="mt-6 grid gap-4 sm:grid-cols-2">
             <li className="p-4 rounded-xl border">Long-form drafts (2,000–6,000+ words)</li>
@@ -72,20 +82,70 @@ export default function ArticleWriter() {
         <section id="faqs">
           <h2 className="text-2xl font-semibold mb-4">Frequently asked questions</h2>
           <div className="space-y-3">
-            {faqs.map((qa, idx) => (
-              <details key={idx} className="p-4 rounded-xl border">
+            {[
+              {
+                q: "What makes this Article Writer different?",
+                a: "It mirrors search intent, structures content to match the SERP, and includes citations, internal links, and meta out of the box.",
+              },
+              {
+                q: "Is the content suitable for U.S. and global markets?",
+                a: "Yes, customize language and geo context for U.S. English or international English to reach local and global audiences.",
+              },
+              { q: "How long are the articles?", a: "Configure 2,000–6,000+ words depending on topic depth and intent." },
+              { q: "Can I export to CMS?", a: "Yes, export markdown/HTML and copy meta tags directly. Notion/Trello export is supported." },
+            ].map((qa, i) => (
+              <details key={i} className="p-4 rounded-xl border">
                 <summary className="font-medium cursor-pointer">{qa.q}</summary>
                 <p className="mt-2 text-slate-700">{qa.a}</p>
               </details>
             ))}
           </div>
+
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify({
-              "@context":"https://schema.org",
-              "@type":"FAQPage",
-              "mainEntity": faqs.map(qa => ({"@type":"Question","name": qa.q, "acceptedAnswer": {"@type":"Answer","text": qa.a}}))
-            }) }}
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: [
+                  {
+                    "@type": "Question",
+                    name: "What makes this Article Writer different?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text:
+                        "It mirrors search intent, structures content to match the SERP, and includes citations, internal links, and meta out of the box.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Is the content suitable for U.S. and global markets?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text:
+                        "Yes, customize language and geo context for U.S. English or international English to reach local and global audiences.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "How long are the articles?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Configure 2,000–6,000+ words depending on topic depth and intent.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Can I export to CMS?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text:
+                        "Yes, export markdown/HTML and copy meta tags directly. Notion/Trello export is supported.",
+                    },
+                  },
+                ],
+              }),
+            }}
           />
         </section>
       </main>
